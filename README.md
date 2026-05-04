@@ -86,7 +86,7 @@ Both trained on 140+ engineered tabular features.
 
 ---
 
-## ⚙️ Model Training
+## Model Training
 
 **Tools:** Python 3.11, scikit-learn, XGBoost, imbalanced-learn, OpenCV, TensorFlow/Keras, SHAP, pandas, numpy, matplotlib, seaborn
 
