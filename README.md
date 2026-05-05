@@ -1,4 +1,4 @@
-# Skin Lesion Classification: ML vs Deep Learning
+# 🩺 Skin Lesion Classification: ML vs Deep Learning
 
 **University of Texas at Arlington — Division of Data Science**  
 **Sidhantaa Sarna | Tiffany De La Cruz | Diego Maldonado**  
@@ -6,7 +6,7 @@
 
 ---
 
-## Motivation
+## 📌 Business Problem / Motivation
 
 Skin cancer is one of the most common cancers worldwide. Early and accurate detection can significantly improve patient outcomes and save lives. Dermatologists use visual inspection of skin lesions to identify potentially dangerous growths — but this process is time-consuming, subjective, and not always accessible.
 
@@ -14,7 +14,7 @@ Most AI approaches default to deep learning, which can be a black box and often 
 
 ---
 
-## Project Overview
+## 📋 Project Overview
 
 This project compares classical machine learning models **(XGBoost and Random Forest)** against a deep learning baseline **(ResNet50)** for multi-class skin lesion classification using dermoscopic images.
 
@@ -28,22 +28,22 @@ Rather than feeding raw images into a neural network, we converted images into *
 | Random Forest | 60% | 0.49 |
 | **XGBoost** | **60%** | **0.50** |
 
-> XGBoost and Random Forest both outperformed the deep learning baseline.
+> ✅ XGBoost and Random Forest both outperformed the deep learning baseline.
 
 ---
 
-## Data
+## 📂 Data
 
 - **Source:** [ISIC Archive — International Skin Imaging Collaboration](https://www.isic-archive.com)
 - **Type:** Dermoscopic JPG images with metadata CSV
 - **Size:** 2,357 images across 9 skin lesion classes
 - **Classes:** Pigmented Benign Keratosis, Melanoma, Basal Cell Carcinoma, Nevus, Squamous Cell Carcinoma, Vascular Lesion, Actinic Keratosis, Dermatofibroma, Seborrheic Keratosis
 
-> Full image dataset not included due to size. Download directly from the [ISIC Archive](https://www.isic-archive.com).
+> ⚠️ Full image dataset not included due to size. Download directly from the [ISIC Archive](https://www.isic-archive.com).
 
 ---
 
-## Data Preprocessing
+## 🔧 Data Preprocessing
 
 ### Deep Learning (ResNet50)
 - Removed hair follicles using morphological filtering
@@ -63,15 +63,24 @@ Converted each image into **140+ numerical features:**
 
 ---
 
-## Exploratory Data Analysis
+## 📊 Exploratory Data Analysis
+
+![Class Distribution](images/class_distribution.png)
 
 - **Class Imbalance:** Pigmented benign keratosis and melanoma dominate; dermatofibroma and vascular lesion have very few samples
 - **Color Distributions:** RGB channel analysis revealed distinct intensity patterns across lesion types
+
+![Red Channel Intensity](images/red_intensity.png)
+![Green Channel Intensity](images/green_intensity.png)
+![Blue Channel Intensity](images/blue_intensity.png)
+
 - **Feature Distributions:** Shape and size features showed the most variation across classes
 
 ---
 
-## Modeling Approach
+## 🤖 Modeling Approach
+
+![Modeling Pipeline](images/modeling_pipeline.png)
 
 ### Baseline — ResNet50 (Deep Learning)
 A convolutional neural network pre-trained on ImageNet, fine-tuned on our ISIC dataset. Learns directly from raw image pixels.
@@ -86,7 +95,7 @@ Both trained on 140+ engineered tabular features.
 
 ---
 
-## Model Training
+## ⚙️ Model Training
 
 **Tools:** Python 3.11, scikit-learn, XGBoost, imbalanced-learn, OpenCV, TensorFlow/Keras, SHAP, pandas, numpy, matplotlib, seaborn
 
@@ -98,7 +107,7 @@ Both trained on 140+ engineered tabular features.
 
 ---
 
-## Results
+## 📈 Results
 
 ### Metrics Used
 - **Accuracy:** Standard benchmark for overall correctness
@@ -112,13 +121,27 @@ Both trained on 140+ engineered tabular features.
 | Random Forest | 60% | 0.49 |
 | **XGBoost** | **60%** | **0.50** |
 
-XGBoost achieved the highest overall performance. Both ML models outperformed the deep learning baseline, particularly on underrepresented classes.
+### XGBoost Results
+![XGBoost Confusion Matrix](images/XGB/xgb_confusion_matrix.png)
+![XGBoost ROC Curve](images/XGB/xgb_roc_curve.png)
+
+### Random Forest Results
+![RF Confusion Matrix](images/RF/rf_confusion_matrix.png)
+![RF ROC Curves](images/RF/rf_roc_curves.png)
 
 ---
 
-## Model Interpretation
+## 🔍 Model Interpretation
 
-### SHAP Values (XGBoost & Random Forest)
+### SHAP Values — XGBoost
+![XGBoost Top 30 Feature Importance](images/XGB/xgb_top30_features.png)
+![XGBoost Permutation Importance](images/XGB/xgb_permutation_importance.png)
+
+### SHAP Values — Random Forest
+![RF Global SHAP Importances](images/RF/rf_global_shap.png)
+![RF Top 30 Feature Importance](images/RF/rf_top30_features.png)
+![RF Permutation Importances](images/RF/rf_permutation_importances.png)
+
 Most influential features:
 - **Radius, area, diameter** — size-related shape features
 - **Texture features** — capturing surface irregularity
@@ -131,7 +154,7 @@ Used to visualize which image regions drove predictions and highlight influentia
 
 ---
 
-## Key Insights
+## 💡 Key Insights
 
 - **Machine learning outperformed deep learning** — 60% vs 55% accuracy
 - **Class imbalance was the primary bottleneck** — no balancing technique fully resolved it
@@ -141,13 +164,13 @@ Used to visualize which image regions drove predictions and highlight influentia
 
 ---
 
-## Conclusion
+## ✅ Conclusion
 
 Classical machine learning models with well-engineered, clinically grounded features outperformed deep learning on this limited, imbalanced dataset. More complex technology is not always better — in medical AI, **interpretability and trust matter just as much as raw performance.**
 
 ---
 
-## Future Work
+## 🔮 Future Work
 
 - Add texture features for finer-grained detail
 - Explore more advanced model architectures
@@ -157,7 +180,7 @@ Classical machine learning models with well-engineered, clinically grounded feat
 
 ---
 
-## How to Run
+## ▶️ How to Run
 
 ```bash
 # 1. Clone the repo
@@ -170,43 +193,69 @@ pip install -r requirements.txt
 # 3. Download dataset from https://www.isic-archive.com and place in data/
 
 # 4. Run feature extraction
-jupyter notebook notebook/feature_extraction/feature_extraction_pipeline.ipynb
+jupyter notebook "notebooks/feature extraction/Image to Tabular Pipeline.ipynb"
 
-# 5. Train models
-jupyter notebook notebook/xgboost/xgboost_classifier.ipynb
-jupyter notebook notebook/random_forest/random_forest_classifier.ipynb
-jupyter notebook notebook/CNN/resnet50_classifier.ipynb
+# 5. Train XGBoost
+jupyter notebook "notebooks/xg boost/xgBoost_final.ipynb"
+
+# 6. Train Random Forest
+jupyter notebook "notebooks/random forest/RF_9_classes.ipynb"
+
+# 7. Run CNN
+jupyter notebook "notebooks/CNN/EDA.ipynb"
 ```
 
 ---
 
-## Repository Structure
+## 📁 Repository Structure
 
 ```
 skin-lesion-classifier/
-├── README.md                  
-├── requirements.txt           
+├── README.md
+├── requirements.txt
 ├── data/
-│   ├── SC_Dataset_9_Classes.csv    
-│   └── sample_images/              
-├── notebook/
-│   ├── xgboost/                    
-│   ├── random_forest/              
-│   ├── feature_extraction/         
-│   └── CNN/                        
+│   ├── SC_Dataset_9_Classes.csv
+│   └── sample_images/
+├── notebooks/
+│   ├── xg boost/
+│   │   ├── xgBoost_final.ipynb
+│   │   └── xgb_results_3_classes.ipynb
+│   ├── random forest/
+│   │   ├── RF_9_classes.ipynb
+│   │   └── Baseline_Models_9_Classes.ipynb
+│   ├── feature extraction/
+│   │   └── Image to Tabular Pipeline.ipynb
+│   └── CNN/
+│       ├── EDA.ipynb
+│       ├── download_data.py
+│       └── preprocess.py
 ├── models/
-│   ├── xgb_best_model.pkl          
-│   ├── rf_9_classes_model.pkl      
-│   └── resnet50.keras              
-├── results/                        
+│   ├── xgb_best_model.pkl
+│   ├── rf_9_classes_model.pkl
+│   └── resnet50.keras
+├── results/
 └── images/
-    ├── RF/                         
-    └── XGB/                        
+    ├── class_distribution.png
+    ├── modeling_pipeline.png
+    ├── red_intensity.png
+    ├── green_intensity.png
+    ├── blue_intensity.png
+    ├── RF/
+    │   ├── rf_confusion_matrix.png
+    │   ├── rf_roc_curves.png
+    │   ├── rf_global_shap.png
+    │   ├── rf_top30_features.png
+    │   └── rf_permutation_importances.png
+    └── XGB/
+        ├── xgb_confusion_matrix.png
+        ├── xgb_roc_curve.png
+        ├── xgb_top30_features.png
+        └── xgb_permutation_importance.png
 ```
 
 ---
 
-## Requirements
+## 📦 Requirements
 
 ```bash
 pip install -r requirements.txt
