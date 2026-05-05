@@ -32,7 +32,7 @@ Rather than feeding raw images into a neural network, we converted images into *
 
 ---
 
-## 📂 Data
+## Data
 
 - **Source:** [ISIC Archive — International Skin Imaging Collaboration](https://www.isic-archive.com)
 - **Type:** Dermoscopic JPG images with metadata CSV
