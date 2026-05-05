@@ -82,8 +82,6 @@ Both trained on 140+ engineered tabular features.
 - **XGBoost:** Chosen for strong tabular performance, regularization, and handling class imbalance
 - **Random Forest:** Chosen as an ensemble comparison with interpretable feature importance
 
-![Class Distribution](images/Class Distribution.png)
-
 > The key distinction: instead of letting a neural network learn features on its own, we explicitly engineered features grounded in **clinical knowledge** — making models more interpretable and trustworthy.
 
 ---
