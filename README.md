@@ -1,4 +1,4 @@
-# 🩺 Skin Lesion Classification: ML vs Deep Learning
+# Skin Lesion Classification: ML vs Deep Learning
 
 **University of Texas at Arlington — Division of Data Science**  
 **Sidhantaa Sarna | Tiffany De La Cruz | Diego Maldonado**  
@@ -6,7 +6,7 @@
 
 ---
 
-## 📌 Business Problem / Motivation
+## Business Problem / Motivation
 
 Skin cancer is one of the most common cancers worldwide. Early and accurate detection can significantly improve patient outcomes and save lives. Dermatologists use visual inspection of skin lesions to identify potentially dangerous growths — but this process is time-consuming, subjective, and not always accessible.
 
@@ -14,7 +14,7 @@ Most AI approaches default to deep learning, which can be a black box and often 
 
 ---
 
-## 📋 Project Overview
+## Project Overview
 
 This project compares classical machine learning models **(XGBoost and Random Forest)** against a deep learning baseline **(ResNet50)** for multi-class skin lesion classification using dermoscopic images.
 
@@ -28,7 +28,7 @@ Rather than feeding raw images into a neural network, we converted images into *
 | Random Forest | 60% | 0.49 |
 | **XGBoost** | **60%** | **0.50** |
 
-> ✅ XGBoost and Random Forest both outperformed the deep learning baseline.
+> XGBoost and Random Forest both outperformed the deep learning baseline.
 
 ---
 
@@ -39,11 +39,11 @@ Rather than feeding raw images into a neural network, we converted images into *
 - **Size:** 2,357 images across 9 skin lesion classes
 - **Classes:** Pigmented Benign Keratosis, Melanoma, Basal Cell Carcinoma, Nevus, Squamous Cell Carcinoma, Vascular Lesion, Actinic Keratosis, Dermatofibroma, Seborrheic Keratosis
 
-> ⚠️ Full image dataset not included due to size. Download directly from the [ISIC Archive](https://www.isic-archive.com).
+> Full image dataset not included due to size. Download directly from the [ISIC Archive](https://www.isic-archive.com).
 
 ---
 
-## 🔧 Data Preprocessing
+## Data Preprocessing
 
 ### Deep Learning (ResNet50)
 - Removed hair follicles using morphological filtering
@@ -63,7 +63,7 @@ Converted each image into **140+ numerical features:**
 
 ---
 
-## 📊 Exploratory Data Analysis
+## Exploratory Data Analysis
 
 ![Class Distribution](images/class_distribution.png)
 
@@ -78,7 +78,7 @@ Converted each image into **140+ numerical features:**
 
 ---
 
-## 🤖 Modeling Approach
+## Modeling Approach
 
 ![Modeling Pipeline](images/modeling_pipeline.png)
 
@@ -95,7 +95,7 @@ Both trained on 140+ engineered tabular features.
 
 ---
 
-## ⚙️ Model Training
+## Model Training
 
 **Tools:** Python 3.11, scikit-learn, XGBoost, imbalanced-learn, OpenCV, TensorFlow/Keras, SHAP, pandas, numpy, matplotlib, seaborn
 
@@ -107,7 +107,7 @@ Both trained on 140+ engineered tabular features.
 
 ---
 
-## 📈 Results
+## Results
 
 ### Metrics Used
 - **Accuracy:** Standard benchmark for overall correctness
@@ -131,7 +131,7 @@ Both trained on 140+ engineered tabular features.
 
 ---
 
-## 🔍 Model Interpretation
+## Model Interpretation
 
 ### SHAP Values — XGBoost
 ![XGBoost Top 30 Feature Importance](images/XGB/xgb_top30_features.png)
@@ -154,7 +154,7 @@ Used to visualize which image regions drove predictions and highlight influentia
 
 ---
 
-## 💡 Key Insights
+## Key Insights
 
 - **Machine learning outperformed deep learning** — 60% vs 55% accuracy
 - **Class imbalance was the primary bottleneck** — no balancing technique fully resolved it
@@ -164,13 +164,13 @@ Used to visualize which image regions drove predictions and highlight influentia
 
 ---
 
-## ✅ Conclusion
+## Conclusion
 
 Classical machine learning models with well-engineered, clinically grounded features outperformed deep learning on this limited, imbalanced dataset. More complex technology is not always better — in medical AI, **interpretability and trust matter just as much as raw performance.**
 
 ---
 
-## 🔮 Future Work
+## Future Work
 
 - Add texture features for finer-grained detail
 - Explore more advanced model architectures
@@ -180,7 +180,7 @@ Classical machine learning models with well-engineered, clinically grounded feat
 
 ---
 
-## ▶️ How to Run
+## How to Run
 
 ```bash
 # 1. Clone the repo
@@ -207,7 +207,7 @@ jupyter notebook "notebooks/CNN/EDA.ipynb"
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 skin-lesion-classifier/
@@ -255,7 +255,7 @@ skin-lesion-classifier/
 
 ---
 
-## 📦 Requirements
+## Requirements
 
 ```bash
 pip install -r requirements.txt
